@@ -1,95 +1,88 @@
 # 🛡️ Isaiah's Cybersecurity & AI Homelab Portfolio
 
 Welcome to my cybersecurity & AI portfolio!  
-This repository highlights the **homelab environment** I’ve built and the projects I run to simulate, detect, and respond to real-world attacks — while also exploring **AI/ML integrations for security operations**.  
+This repository showcases my **homelab environment** and the projects I’ve built to simulate, detect, and respond to real-world attacks — while also exploring **AI/ML integrations for SOC operations**.  
 
-My focus areas: **Digital Forensics & Incident Response (DFIR), Threat Hunting, Detection Engineering, SOC Automation, and AI-driven Security**.
+My focus areas: **DFIR, Threat Hunting, Detection Engineering, SOC Automation, and AI-driven Security**.
 
 ---
 
-## 🔥 Featured Homelab Projects
+## ⚡ Homelab Build — Order of Operations
 
-### 1. Graylog SIEM Setup
-- Centralized log ingestion on dedicated VM.  
-- Forwarding logs from **Pangolin Secure Tunnel, Authentik, VPS firewall, and internal services**.  
-- Custom pipelines:
+### 1) Proxmox Homelab Infrastructure
+- Virtualized environment running on:
+  - Intel i9 desktop (64GB DDR5 + RTX 4080)  
+  - NASYNC server (64GB DDR5 + 36TB storage)  
+- Network segmentation with UniFi UDR7 + VLANs.  
+- Hosting:
+  - SIEM stack (Logstash, Wazuh, Splunk test instance)  
+  - Blue Team tooling (TheHive, Cortex, n8n)  
+  - Adversary simulation VMs  
+
+---
+
+### 2) VPS with Pangolin & Authentik
+- Hardened VPS setup with **UFW firewalling** and **Cloudflare WAF**.  
+- Deployed **Pangolin Secure Tunnel** for private access.  
+- Integrated **Authentik IAM** for Single Sign-On (SSO) across lab services.  
+- All containers run **non-root**, following Docker hardening best practices.  
+
+---
+
+### 3) Log Centralization with Logstash
+- Deployed **Logstash** for centralized log ingestion and parsing.  
+- Ingesting:
+  - VPS firewall logs  
+  - Authentik authentication events  
+  - Pangolin secure tunnel access attempts  
+- Built pipelines for:
+  - GeoIP enrichment  
   - Authentication monitoring  
-  - Access attempts + GeoIP enrichment  
-  - Alert routing to Slack/Discord  
-
-📂 [See Project →](./graylog-homelab)
+  - Alert forwarding to Slack/Discord  
 
 ---
 
-### 2. Wazuh for Endpoint & Network Detection
-- Wazuh cluster on Proxmox for endpoint telemetry + HIDS.  
-- Integrated agents across **VPS, VMs, and workstations**.  
+### 4) Wazuh for Endpoint & Host Monitoring
+- Wazuh cluster on Proxmox for **endpoint telemetry + HIDS**.  
+- Agents deployed on:
+  - VPS  
+  - Homelab VMs  
+  - Workstations  
 - Detection rules for:
   - Password spraying  
   - Reverse shells  
   - File integrity monitoring (FIM)  
 
-📂 [See Project →](./wazuh-homelab)
-
 ---
 
-### 3. Splunk Threat Hunting Dashboards
-- Built custom **Splunk dashboards** with:
-  - MITRE ATT&CK mapping  
-  - Risk scoring + emoji triage  
-  - Network & user baselining (service accounts, logon hours, subnets)  
-- CSV/KV lookups for:
-  - Known good users/services  
-  - Malicious IOCs  
-  - Network baselines  
-
-📂 [See Project →](./splunk-dashboards)
-
----
-
-### 4. Proxmox Homelab Infrastructure
-- Virtualized environment running on:
-  - Intel i9 desktop (64GB DDR5 + RTX 4080)  
-  - NASYNC server (64GB DDR5 + 36TB storage)  
-- UniFi UDR7 firewall + VLAN segmentation.  
-- Hosting:
-  - SIEM stack (Graylog, Wazuh, Splunk test instance)  
-  - Blue team tooling (TheHive, Cortex, n8n)  
-  - Adversary simulation VMs  
-
-📂 [See Project →](./proxmox-homelab)
-
----
-
-### 5. Network Security & Monitoring
-- Deployed **Zeek sensor** for network traffic analysis.  
-- SPAN/mirror port on UniFi to feed traffic to SIEMs.  
-- Pi-hole DNS for malicious domain detection + ad blocking.  
-- Custom detections:
+### 5) Network Security & Monitoring
+- **Zeek sensor** deployed on dedicated NIC for deep packet analysis.  
+- SPAN/mirror port on UniFi for full visibility.  
+- **Pi-hole DNS** for blocking malicious domains & ad tracking.  
+- Custom detections for:
   - Beaconing traffic  
   - Known bad DNS queries  
   - Suspicious ports/protocols  
 
-📂 [See Project →](./network-monitoring)
-
 ---
 
-## 🤖 AI & Machine Learning Projects
-
-### LocalAI / Vector DB / RAG Pipelines
-- Running **LocalAI + Qdrant Vector DB** in my lab.  
-- Built **RAG (Retrieval-Augmented Generation)** pipeline to enhance LLM responses with homelab/security data.  
-- Current experiments:
-  - Feeding Splunk logs into vector DB for contextual queries.  
-  - Using **n8n automation** to scrape + enrich threat intel → store in Qdrant → query via AI.  
-  - Training smaller models on RTX 4080 for **cybersecurity + DFIR-focused tasks**.  
-
-📂 [See Project →](./ai-rag-pipeline)
+### 6) AI / ML Security Integrations
+- Built **RAG (Retrieval-Augmented Generation) pipelines** with:
+  - **LocalAI** (self-hosted LLMs)  
+  - **Qdrant Vector DB** for log + intel embeddings  
+- Integrated **n8n automation** for:
+  - Scraping threat intel feeds  
+  - Enriching with OSINT  
+  - Pushing to vector DB for AI-driven queries  
+- Training custom AI models on RTX 4080 for:
+  - Splunk query assistance  
+  - DFIR investigation helpers  
+  - Cybersecurity-specific knowledge bases  
 
 ---
 
 ## 🧰 Skills Demonstrated
-- **SIEM Engineering**: Splunk ES, Graylog, Wazuh  
+- **SIEM Engineering**: Splunk ES, Logstash, Wazuh  
 - **Detection Engineering**: Sysmon, Zeek, Suricata rules  
 - **DFIR**: Forensics, log analysis, IOC tracking  
 - **Infrastructure**: Docker, Proxmox, Cloudflare Tunnel, UFW hardening  
@@ -100,22 +93,23 @@ My focus areas: **Digital Forensics & Incident Response (DFIR), Threat Hunting, 
 ---
 
 ## 📜 Certifications
-Here are my earned certifications:
-
 <p align="left">
-  <img src="https://img.shields.io/badge/-CompTIA%20Security%2B-red?logo=comptia&logoColor=white&style=for-the-badge" />
-  <img src="https://img.shields.io/badge/-CompTIA%20CySA%2B-blue?logo=comptia&logoColor=white&style=for-the-badge" />
-  <img src="https://img.shields.io/badge/CompTIA_CNVP-yellow?logo=comptia&style=for-the-badge" alt="CompTIA CNVP" />
-  <img src="https://img.shields.io/badge/CompTIA_CSAP-blue?logo=comptia&style=for-the-badge" alt="CompTIA CSAP" />
+  <img src="https://img.shields.io/badge/-CNSP-blue?logo=comptia&style=for-the-badge" alt="CNSP" />
+  <img src="https://img.shields.io/badge/-Pentest%2B-red?logo=comptia&style=for-the-badge" alt="Pentest+" />
+  <img src="https://img.shields.io/badge/-CNVP-yellow?logo=comptia&style=for-the-badge" alt="CNVP" />
+  <img src="https://img.shields.io/badge/-CSAP-green?logo=comptia&style=for-the-badge" alt="CSAP" />
 </p>
 
 ---
 
 ## 📸 Screenshots & Diagrams
-*(coming soon — dashboards, lab network diagrams, AI workflow charts)*
+*(coming soon — dashboards, network topology diagrams, AI pipeline architecture)*
 
 ---
 
 ## 📬 Contact
-- [LinkedIn](https://linkedin.com/in/yourprofile)  
-- [Email](mailto:youremail@example.com)
+<p align="left">
+  <a href="https://linkedin.com/in/yourprofile">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile"/>
+  </a>
+</p>
