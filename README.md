@@ -109,7 +109,7 @@ My focus areas: **DFIR, Threat Hunting, Detection Engineering, SOC Automation, a
 
 ## 📬 Contact
 <p align="left">
-  <a href="https://linkedin.com/in/yourprofile">
+  <a href="https://www.linkedin.com/in/isaiah-a-a3a70b181">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Profile"/>
   </a>
 </p>
