@@ -29,11 +29,9 @@ The analyst starts the investigation. Specialists use scoped tools to examine ev
 
 **This is a reasoning example, not MIMIR output.** On a made-up workstation, a process event shows PowerShell started with an encoded command. A DNS record and a network record follow within seconds:
 
-| ID | Fabricated artifact | Observation |
-| --- | --- | --- |
-| LAB-01 | Process event | PowerShell launched with an encoded command on `LAB-WS01`. |
-| LAB-02 | DNS event | `LAB-WS01` queried `sync.example.invalid`. |
-| LAB-03 | Network event | `LAB-WS01` contacted `203.0.113.10`. |
+- **LAB-01 · Process event:** PowerShell launched with an encoded command on `LAB-WS01`.
+- **LAB-02 · DNS event:** `LAB-WS01` queried `sync.example.invalid`.
+- **LAB-03 · Network event:** `LAB-WS01` contacted `203.0.113.10`.
 
 The domain and IP address are reserved for examples ([RFC 2606](https://www.rfc-editor.org/info/rfc2606/), [RFC 5737](https://www.rfc-editor.org/info/rfc5737/)).
 
