@@ -26,7 +26,9 @@
 
 ### 🧠 MIMIR — multi-agent DFIR
 
-Built for the SANS Find Evil! 2026 hackathon. Nine specialist agents investigate memory, disk, logs, network, and malware evidence through 33 forensic tools over MCP. Read-only evidence access, hash-chained tool logs, and human approval gates keep the investigation accountable. The private Python and Claude codebase has 541 tests.
+Built for the SANS Find Evil! 2026 hackathon. Nine specialist agents investigate memory, disk, logs, network, and malware evidence through 33 forensic tools over MCP. Read-only evidence access, hash-chained tool logs, and human approval gates keep the investigation accountable.
+
+[Read the MIMIR design note and synthetic investigation example →](showcase/MIMIR.md)
 
 ### 🛡️ WinDEAS — Windows forensics
 
